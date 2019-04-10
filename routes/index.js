@@ -18,6 +18,23 @@ router.get('/pets', (req, res) => {
   res.render('pets', { db: petsDB });
 });
 
+router.get('/pets/new', (req, res) => {
+  res.render('new')
+});
+
+router.post('/pets', (req, res) => {
+  const { name, imgURL } = req.body;
+  const generateId = () => petsDB.length + 1;
+  const newPet = {
+    name,
+    imgURL,
+    id: generateId()
+  };
+
+  petsDB.push(newPet)
+  res.redirect(`/pets/${ newPet.id }`)
+});
+
 router.get('/pets/:id', (req, res) => {
   const id = Number(req.params.id);
   
@@ -25,5 +42,6 @@ router.get('/pets/:id', (req, res) => {
 
   res.render('pet', { pet: filterPets(id) });
 });
+
 
 module.exports = router;
