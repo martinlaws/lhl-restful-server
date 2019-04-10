@@ -6,7 +6,7 @@ const petsDB = [
   { id: 2, name: 'Mittens', imgURL: 'https://placekitten.com/300/300' }
 ];
 
-const filterPets = id => petsDB.find(pet => pet.id === id);
+const filterPets = id => petsDB.find(pet => pet.id === Number(id));
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -36,12 +36,25 @@ router.post('/pets', (req, res) => {
 });
 
 router.get('/pets/:id', (req, res) => {
-  const id = Number(req.params.id);
-  
-  console.log(filterPets(id));
-
-  res.render('pet', { pet: filterPets(id) });
+  res.render('pet', { pet: filterPets(req.params.id) });
 });
 
+router.get('/pets/:id/edit', (req, res) => {
+  res.render('edit', { pet: filterPets(req.params.id) });
+});
+
+router.post('/pets/:id/edit', (req, res) => {
+  const {
+    id,
+    name,
+    imgURL
+  } = req.body;
+
+  const index = petsDB.findIndex( pet => pet.id === Number(id));
+
+  petsDB[index] = { id: Number(id), name, imgURL };
+
+  res.redirect(`/pets/${ id }`);
+});
 
 module.exports = router;

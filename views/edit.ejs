@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Edit <%= pet.name %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <a href="/pets" title="Back to pets list page">Back</a>
+    <h1>Edit <%= pet.name %></h1>
+    <main>
+      <section>
+        <header>
+          <form method="POST" action="/pets/<%= pet.id %>/edit">
+            <input type="hidden" id="id" name="id" value="<%= pet.id %>" />
+
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" value="<%= pet.name %>" placeholder="Enter name..." />
+
+            <label for="imgURL">Image URL</label>
+            <input type="text" id="imgURL" name="imgURL" value="<%= pet.imgURL %>" placeholder="Enter image url ..." />
+            
+            <button type="submit">Edit pet</button>
+          </form>
+        </header>
+      </section>
+    </main>
+  </body>
+</html>
