@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Pets</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>Pets</h1>
+    <main>
+    <% db.forEach( pet => { %>
+      <section>
+        <header>
+          <a href="<%= `/pets/${pet.id}` %>" title="Link to <%= pet.name %>">
+          Get to know <%= pet.name %>
+          </a>
+        </header>
+        <img src="<%= pet.imgURL %>" alt="photo of my dog">
+      </section>
+    <% }) %>
+    </main>
+  </body>
+</html>

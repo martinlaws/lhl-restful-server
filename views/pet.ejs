@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Pets</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <a href="/pets" title="Back to pets list page">Back</a>
+    <h1>Pets</h1>
+    <main>
+      <section>
+        <header>
+          Hi! I'm <%= pet.name %>
+        </header>
+        <img src="<%= pet.imgURL %>" alt="photo of my dog">
+      </section>
+    </main>
+  </body>
+</html>
