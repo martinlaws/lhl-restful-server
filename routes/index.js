@@ -7,6 +7,7 @@ const petsDB = [
 ];
 
 const filterPets = id => petsDB.find(pet => pet.id === Number(id));
+const findPetIndex = id => petsDB.findIndex( pet => pet.id === Number(id));
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -50,11 +51,17 @@ router.post('/pets/:id/edit', (req, res) => {
     imgURL
   } = req.body;
 
-  const index = petsDB.findIndex( pet => pet.id === Number(id));
-
-  petsDB[index] = { id: Number(id), name, imgURL };
+  petsDB[findPetIndex(id)] = { id: Number(id), name, imgURL };
 
   res.redirect(`/pets/${ id }`);
 });
+
+router.get('/pets/:id/delete', (req, res) => {
+  const { id } = req.params.id;
+
+  petsDB.splice(findPetIndex(id), 1);
+
+  res.redirect('/pets')
+})
 
 module.exports = router;

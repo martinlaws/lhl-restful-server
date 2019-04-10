@@ -13,7 +13,8 @@
           <a href="<%= `/pets/${pet.id}` %>" title="Link to <%= pet.name %>">
           Get to know <%= pet.name %>
           </a>
-          <a href="<%= `/pets/${pet.id}/edit` %>">Edit</a>
+          <a href="<%= `/pets/${pet.id}/edit` %>" title="Edit pet">Edit</a>
+          <a href="<%= `/pets/${pet.id}/delete` %>" title="Delete pet">Delete ☠️</a>
         </header>
         <img src="<%= pet.imgURL %>" alt="photo of my dog">
       </section>
