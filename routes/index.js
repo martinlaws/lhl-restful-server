@@ -11,7 +11,7 @@ const findPetIndex = id => petsDB.findIndex( pet => pet.id === Number(id));
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.render('index', { title: 'Lighthouse Labs!' });
 });
 
 // GET pets list
